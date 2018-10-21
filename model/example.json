@@ -1,0 +1,40 @@
+[
+	{
+		"tweet_text" : "Aakash",
+		"label" : 0,
+		"tweet_features" : [2.5, 6.7, 8.9, 10.4, 3, 4, 7],
+		"tweet_data" : {
+			"retweet_count" : "304",
+			"favourite_count" : "4",
+			"created_at" : 14556789
+		},
+		"user" : {
+			"followers_count" : "1002",
+			"statuses_count" : "55",
+			"verified" : false,
+			"created_at" : 14556789,
+			"favourites_count" : "5",
+			"listed_count" : "6",
+			"friends_count" : "7"
+		}
+	},
+	{
+		"tweet_text" : "Vaibhav",
+		"label" : 1,
+		"tweet_features" : [2.5, 6.7, 8.9, 10.4, 3, 4, 7],
+		"tweet_data" : {
+			"retweet_count" : "304",
+			"favourite_count" : "4",
+			"created_at" : 14556789
+		},
+		"user" : {
+			"followers_count" : "1002",
+			"statuses_count" : "55",
+			"verified" : true,
+			"created_at" : 14556789,
+			"favourites_count" : "5",
+			"listed_count" : "6",
+			"friends_count" : "7"
+		}
+	}
+]
