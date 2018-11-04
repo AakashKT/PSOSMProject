@@ -28,12 +28,12 @@ class ElectionDataWithAuxFeatures(Dataset):
 		tweet_obj = self.tweets[index]
 		tweet_features = tweet_obj['tweet_features'][:]
 
-		tf = tweet_obj['tweet_data']
+		tf = tweet_obj['tweet']
 		tweet_features.append(int(tf['retweet_count']))
 		tweet_features.append(int(tf['favourite_count']))
 		tweet_features.append(int(tf['created_at']))
 
-		tf = tweet_obj['user']
+		tf = tweet_obj['user_data']
 		tweet_features.append(int(tf['followers_count']))
 		tweet_features.append(int(tf['statuses_count']))
 		tweet_features.append(0 if tf['verified'] == False else 1)

@@ -1,11 +1,13 @@
 import preprocessor as p
 import numpy as np
-import json
+import json, sys
+
+file_path = sys.argv[1]
 
 '''
     Set options: which options should be removed from the text
 '''
-p.set_options(p.OPT.URL, p.OPT.EMOJI)
+p.set_options(p.OPT.EMOJI)
 
 '''
     Load all the embeddings
@@ -23,10 +25,15 @@ with open('glove.twitter.27B.200d.txt') as f:
     Helper function
 '''
 def embed(word):
-    if word in embeddings.keys():
+    try:
         return True, embeddings[word]
-    return False, 0
+    except:
+        return False, 0
 
+    # if word in embeddings.keys():
+    #     return True, embeddings[word]
+
+    # return False, 0
 '''
     Make feature for the given text
 '''
@@ -43,13 +50,24 @@ def make_feature(text):
         return features
     return features / count
 
-with open('data.json') as f:
+with open(file_path) as f:
     data = json.load(f)
 
+print("CLEANING...")
+
+final = []
+
+done = 0
 for tweet in data:
-    cleanData = p.clean(tweet["tweet_text"].encode("utf-8"))
+    cleanData = p.clean(tweet["text"].encode("utf-8"))
     features = make_feature(cleanData)
     tweet['tweet_features'] = features.tolist()
+    done += 1
+    print("%s" % done)
+
+print("done")
+
+
 
 with open('processed_data.json', 'w') as output_file:
     json.dump(data, output_file)
